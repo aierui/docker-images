@@ -9,8 +9,8 @@ MAINTAINER centos 7 that dev
 RUN mkdir -p /data1/ && \
     yum install -y wget && \
     mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base-Origin.repo && \
-    wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo && \
-    yum makecache && \
+    wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo && \
+    yum clean all && yum makecache && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     yum install -y vim rsync gcc-c++ re2c iproute net-tools \
         aria2 autoconf git make cmake cmake3 bison \

@@ -15,7 +15,7 @@ RUN mkdir -p /data1/ && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     yum install -y yum-fastestmirror vim rsync gcc-c++ re2c iproute net-tools \
         aria2 autoconf git make cmake cmake3 bison \
-        atop htop sysstat dstat perf losf gdb tree && \
+        atop htop sysstat dstat perf gdb tree && \
     yum clean all
 
 # 

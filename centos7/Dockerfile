@@ -1,4 +1,4 @@
-FROM daocloud.io/centos:7
+FROM centos:centos7.8.2003
 
 MAINTAINER centos 7 that dev
 
@@ -8,11 +8,12 @@ MAINTAINER centos 7 that dev
 #
 RUN mkdir -p /data1/ && \
     yum install -y wget && \
-    mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base-Origin.repo && \
-    wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo && \
+    curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo && \
+    sed -i -e '/mirrors.cloud.aliyuncs.com/d' -e '/mirrors.aliyuncs.com/d' /etc/yum.repos.d/CentOS-Base.repo && \
+    curl -o /etc/yum.repos.d/epel.repo https://mirrors.aliyun.com/repo/epel-7.repo && \
     yum clean all && yum makecache && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    yum install -y vim rsync gcc-c++ re2c iproute net-tools \
+    yum install -y yum-fastestmirror vim rsync gcc-c++ re2c iproute net-tools \
         aria2 autoconf git make cmake cmake3 bison \
         atop htop sysstat dstat perf losf gdb tree && \
     yum clean all

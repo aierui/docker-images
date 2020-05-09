@@ -13,7 +13,7 @@ RUN mkdir -p /data1/ && \
     curl -o /etc/yum.repos.d/epel.repo https://mirrors.aliyun.com/repo/epel-7.repo && \
     yum clean all && yum makecache && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    yum install -y yum-fastestmirror vim rsync gcc-c++ re2c iproute net-tools \
+    yum install -y yum-fastestmirror vim rsync gcc gcc-c++ re2c iproute net-tools \
         aria2 autoconf git make cmake cmake3 bison \
         atop htop sysstat dstat perf gdb tree && \
     yum clean all
